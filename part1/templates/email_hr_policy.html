@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Action Required: Policy Acknowledgment</title>
+</head>
+<body style="margin:0; padding:0; background-color:#f4f4f4; font-family:Arial, sans-serif;">
+
+  <table width="100%" cellpadding="0" cellspacing="0" bgcolor="#f4f4f4">
+    <tr>
+      <td align="center" style="padding:40px 0;">
+
+        <table width="600" cellpadding="0" cellspacing="0" bgcolor="#ffffff" style="border-radius:6px; overflow:hidden;">
+
+          <!-- Header -->
+          <tr>
+            <td bgcolor="#2e7d32" style="padding:24px 32px;">
+              <p style="margin:0; color:#ffffff; font-size:18px; font-weight:bold;">Human Resources</p>
+            </td>
+          </tr>
+
+          <!-- Body -->
+          <tr>
+            <td style="padding:32px;">
+              <p style="margin:0 0 16px 0; font-size:15px; color:#333333;">Hi {{.FirstName}},</p>
+
+              <p style="margin:0 0 16px 0; font-size:15px; color:#333333;">
+                As part of our annual compliance cycle, all employees are required to review and acknowledge
+                the updated <strong>Acceptable Use Policy</strong> and <strong>Data Handling Guidelines</strong>
+                by end of business this Friday.
+              </p>
+
+              <p style="margin:0 0 16px 0; font-size:15px; color:#333333;">
+                This is a mandatory requirement. Employees who have not completed acknowledgment by the deadline
+                will be flagged for follow-up with their line manager.
+              </p>
+
+              <p style="margin:0 0 24px 0; font-size:15px; color:#333333;">
+                The review takes approximately 5 minutes to complete.
+              </p>
+
+              <table cellpadding="0" cellspacing="0">
+                <tr>
+                  <td bgcolor="#2e7d32" style="border-radius:4px;">
+                    <a href="{{.URL}}" style="display:inline-block; padding:14px 28px; color:#ffffff; font-size:15px; font-weight:bold; text-decoration:none;">
+                      Review and Acknowledge
+                    </a>
+                  </td>
+                </tr>
+              </table>
+
+              <p style="margin:24px 0 0 0; font-size:13px; color:#888888;">
+                If the button does not work, copy and paste this link into your browser:<br>
+                <a href="{{.URL}}" style="color:#2e7d32;">{{.URL}}</a>
+              </p>
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td bgcolor="#f4f4f4" style="padding:20px 32px;">
+              <p style="margin:0; font-size:12px; color:#999999;">
+                This message was sent by the HR Compliance Team.<br>
+                For questions, contact hr@yourdomain.com
+              </p>
+            </td>
+          </tr>
+
+        </table>
+
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>
