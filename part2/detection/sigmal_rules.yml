@@ -1,0 +1,62 @@
+# Sigma Detection Rules — AI-Assisted Phishing
+# Part of: phishsim-from-scratch blog series
+# Purpose: Detect AI-generated phishing campaign activity on the defensive side
+
+---
+
+# Rule 1 - High volume of unique outbound emails
+title: Possible AI Phishing - High Volume Unique Emails
+status: experimental
+description: Detects unusually high volume of outbound emails from a single source within a short window — a common indicator of automated phishing campaigns.
+logsource:
+  product: windows
+  service: security
+detection:
+  selection:
+    EventID: 4625
+    Source: SMTP
+  condition: selection | count() > 50 within 1h
+falsepositives:
+  - Legitimate bulk email systems
+level: medium
+# Legitimate senders rarely send 50+ unique emails in one hour
+
+---
+
+# Rule 2 - OSINT tool running on a corporate machine
+title: OSINT Tool Execution - TheHarvester
+status: experimental
+description: Detects execution of TheHarvester on a corporate endpoint — unexpected in most environments and a strong indicator of pre-attack reconnaissance.
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection:
+    EventID: 1
+    CommandLine|contains:
+      - 'theHarvester'
+      - 'harvester.py'
+  condition: selection
+falsepositives:
+  - Authorized red team activity
+level: high
+# TheHarvester on a corporate endpoint is a red flag
+
+---
+
+# Rule 3 - Ollama API traffic on the network
+title: Local LLM API - Ollama Port Activity
+status: experimental
+description: Detects network connections to port 11434, the default Ollama API port. Unexpected in corporate environments and may indicate local LLM use for phishing lure generation.
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection:
+    EventID: 3
+    DestinationPort: 11434
+  condition: selection
+falsepositives:
+  - Authorized security research systems
+level: medium
+# Port 11434 is Ollama's default port — unusual in corporate environments
