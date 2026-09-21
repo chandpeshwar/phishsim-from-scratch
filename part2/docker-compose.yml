@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+
+  gophish:
+    image: gophish/gophish
+    container_name: gophish
+    ports:
+      - "3333:3333"
+      - "80:80"
+    volumes:
+      - ./part1/config/gophish_config.json:/opt/gophish/config.json
+    restart: unless-stopped
+
+  ollama:
+    image: ollama/ollama
+    container_name: ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    restart: unless-stopped
+
+volumes:
+  ollama_data:
